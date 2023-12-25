@@ -49,7 +49,42 @@ export class LoginConfig {
 
     private readParametersFromCreds() {
         let creds = core.getInput('creds', { required: false });
+        if(creds){
+            core.info("creds is NOT empty or null.");
+        }else{
+            core.info("creds is empty or null.");
+        }
+        
         let secrets = creds ? new SecretParser(creds, FormatType.JSON) : null;
+        if(secrets){
+            core.info("secrets is NOT empty or null.");
+            let clientId1 = secrets.getSecret("$.clientId", false);
+            let clientSecret1 = secrets.getSecret("$.clientSecret", false);
+            let subscriptionId1 = secrets.getSecret("$.subscriptionId", false);
+            let tenantId1 = secrets.getSecret("$.tenantId", false);
+            if(clientId1){
+                core.info("clientId is NOT empty or null.");
+            }else{
+                core.info("clientId is empty or null.");
+            }
+            if(clientSecret1){
+                core.info("clientSecret is NOT empty or null.");
+            }else{
+                core.info("clientSecret is empty or null.");
+            }
+            if(subscriptionId1){
+                core.info("subscriptionId is NOT empty or null.");
+            }else{
+                core.info("subscriptionId is empty or null.");
+            }
+            if(tenantId1){
+                core.info("tenantId is NOT empty or null.");
+            }else{
+                core.info("tenantId is empty or null.");
+            }
+        }else{
+            core.info("secrets is empty or null.");
+        }
         if (!secrets) {
             return;
         }
