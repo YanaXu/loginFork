@@ -10,6 +10,9 @@ export function setUserAgent(): void {
     let actionName = 'AzureLogin';
     process.env.AZURE_HTTP_USER_AGENT = (!!process.env.AZURE_HTTP_USER_AGENT ? `${process.env.AZURE_HTTP_USER_AGENT} ` : '') + `GITHUBACTIONS/${actionName}@v1_${usrAgentRepo}`;
     process.env.AZUREPS_HOST_ENVIRONMENT = (!!process.env.AZUREPS_HOST_ENVIRONMENT ? `${process.env.AZUREPS_HOST_ENVIRONMENT} ` : '') + `GITHUBACTIONS/${actionName}@v1_${usrAgentRepo}`;
+
+    core.info(`process.env.AZURE_HTTP_USER_AGENT = ${process.env.AZURE_HTTP_USER_AGENT}`);
+    core.info(`process.env.AZURE_HTTP_USER_AGENT = ${process.env.AZUREPS_HOST_ENVIRONMENT}`);
 }
 
 export async function cleanupAzCLIAccounts(): Promise<void> {
