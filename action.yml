@@ -39,6 +39,8 @@ branding:
   color: 'blue'
 runs:
   using: 'node20'
+  pre-if: (!env.AZURE_LOGIN_SKIP_PRE || env.AZURE_LOGIN_SKIP_PRE != 'true')
   pre: 'lib/cleanup/index.js'
   main: 'lib/main/index.js'
+  post-if: (!env.AZURE_LOGIN_SKIP_POST || env.AZURE_LOGIN_SKIP_POST != 'true')
   post: 'lib/cleanup/index.js'
