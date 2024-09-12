@@ -2,6 +2,7 @@ import * as core from '@actions/core';
 import { setUserAgent, cleanupAzCLIAccounts, cleanupAzPSAccounts } from './common/Utils';
 
 async function cleanup() {
+    core.warning("I'm in cleanup!");
     try {
         setUserAgent();
         await cleanupAzCLIAccounts();
